@@ -47,43 +47,43 @@ export default function Info({ open, handleClose }) {
               <ListItem
                 button
                 onClick={() =>
-                  (window.location.href = "https://github.com/modder4869")
+                  (window.location.href = "https://gemini.google/overview/image-generation")
                 }
               >
                 <ListItemAvatar>
                   <Avatar
-                    alt="Modder4869"
-                    src="https://avatars.githubusercontent.com/modder4869"
+                    alt="Google Nano Banana Pro"
+                    src="https://gemini.google/images/spark_4c.png"
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary="Modder4869"
-                  secondary="for the help with the code"
+                  primary="Google Nano Banana Pro"
+                  secondary="for the sticker images"
                 />
               </ListItem>
               <ListItem
                 button
                 onClick={() =>
                 (window.location.href =
-                  "https://www.reddit.com/r/ProjectSekai/comments/x1h4v1/after_an_ungodly_amount_of_time_i_finally_made/")
+                  "https://github.com/pStrikeZ")
                 }
               >
                 <ListItemAvatar>
                   <Avatar
-                    alt="u/SherenPlaysGames"
-                    src="https://styles.redditmedia.com/t5_mygft/styles/profileIcon_n1kman41j5891.jpg"
+                    alt="pStrikeZ"
+                    src="https://avatars.githubusercontent.com/pStrikeZ"
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary="u/SherenPlaysGames"
-                  secondary="for the original stamps"
+                  primary="pStrikeZ"
+                  secondary="for ONGEKI version of the project"
                 />
               </ListItem>
               <ListItem
                 button
                 onClick={() =>
                 (window.location.href =
-                  "https://github.com/TheOriginalAyaka/sekai-stickers/graphs/contributors")
+                  "https://github.com/pStrikeZ/ongeki-stickers/graphs/contributors")
                 }
               >
                 <ListItemAvatar>
@@ -106,7 +106,7 @@ export default function Info({ open, handleClose }) {
                 button
                 onClick={() =>
                 (window.location.href =
-                  "https://github.com/TheOriginalAyaka/sekai-stickers")
+                  "https://github.com/pStrikeZ/ongeki-stickers")
                 }
               >
                 <ListItemAvatar>
@@ -118,6 +118,7 @@ export default function Info({ open, handleClose }) {
                 <ListItemText primary="GitHub" secondary="Source Code" />
               </ListItem>
             </List>
+            {/*
             <Typography variant="h6" component="h3">
               The discord bot:
             </Typography>
@@ -141,6 +142,7 @@ export default function Info({ open, handleClose }) {
                 />
               </ListItem>
             </List>
+            */}
             {/*             <Typography variant="h6" component="h3">
               Total stickers made using the app:
               <br />
