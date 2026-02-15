@@ -1,18 +1,12 @@
-import axios from "axios";
-import config from "../config.json";
+// This file has been modified to remove dependency on the external backend API.
+// It now returns a static configuration.
 
 async function getConfiguration() {
-  const key = localStorage.getItem("x-key");
-  const responce = await axios.get(`${config.apiUrl}/config`, {
-    headers: {
-      "x-key": key,
-    },
-  });
-  if (responce.data.key) {
-    localStorage.setItem("x-key", responce.data.key);
-  }
-  console.log(responce.data);
-  return responce.data;
+  // Return static configuration since we are now a static site.
+  // "total" is just a placeholder as we don't have a backend to count global usage.
+  return {
+    total: "N/A - Static Mode"
+  };
 }
 
 export default getConfiguration;

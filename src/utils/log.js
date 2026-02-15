@@ -1,30 +1,11 @@
-import axios from "axios";
-import config from "../config";
+// This file has been modified to remove dependency on the external backend API.
+// The logging function is now a no-op.
 
 async function log(id, name, type) {
-  const key = localStorage.getItem("x-key");
-  try {
-    const responce = await axios.post(
-      `${config.apiUrl}/log`,
-      {
-        id: id,
-        name: name,
-        type: type,
-      },
-      {
-        headers: {
-          "x-key": key,
-        },
-      }
-    );
-    if (responce.data.key) {
-      localStorage.setItem("x-key", responce.data.key);
-    }
-    console.log(responce.data);
-    return responce.data;
-  } catch (error) {
-    console.log(error);
-  }
+  // No-op: logging is disabled in static mode.
+  // You can re-enable this if you have your own backend.
+  console.log(`[Static Mode] Action: ${type}, Character: ${name} (${id})`);
+  return Promise.resolve();
 }
 
 export default log;
