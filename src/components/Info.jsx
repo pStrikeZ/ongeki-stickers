@@ -11,7 +11,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
-export default function Info({ open, handleClose, config }) {
+export default function Info({ open, handleClose }) {
   return (
     <div>
       <Dialog
@@ -64,8 +64,8 @@ export default function Info({ open, handleClose, config }) {
               <ListItem
                 button
                 onClick={() =>
-                  (window.location.href =
-                    "https://www.reddit.com/r/ProjectSekai/comments/x1h4v1/after_an_ungodly_amount_of_time_i_finally_made/")
+                (window.location.href =
+                  "https://www.reddit.com/r/ProjectSekai/comments/x1h4v1/after_an_ungodly_amount_of_time_i_finally_made/")
                 }
               >
                 <ListItemAvatar>
@@ -82,8 +82,8 @@ export default function Info({ open, handleClose, config }) {
               <ListItem
                 button
                 onClick={() =>
-                  (window.location.href =
-                    "https://github.com/TheOriginalAyaka/sekai-stickers/graphs/contributors")
+                (window.location.href =
+                  "https://github.com/TheOriginalAyaka/sekai-stickers/graphs/contributors")
                 }
               >
                 <ListItemAvatar>
@@ -105,8 +105,8 @@ export default function Info({ open, handleClose, config }) {
               <ListItem
                 button
                 onClick={() =>
-                  (window.location.href =
-                    "https://github.com/TheOriginalAyaka/sekai-stickers")
+                (window.location.href =
+                  "https://github.com/TheOriginalAyaka/sekai-stickers")
                 }
               >
                 <ListItemAvatar>
@@ -125,8 +125,8 @@ export default function Info({ open, handleClose, config }) {
               <ListItem
                 button
                 onClick={() =>
-                  (window.location.href =
-                    "http://link.ayaka.one/stbot")
+                (window.location.href =
+                  "http://link.ayaka.one/stbot")
                 }
               >
                 <ListItemAvatar>
@@ -141,13 +141,13 @@ export default function Info({ open, handleClose, config }) {
                 />
               </ListItem>
             </List>
-            <Typography variant="h6" component="h3">
+            {/*             <Typography variant="h6" component="h3">
               Total stickers made using the app:
               <br />
               {config?.global
                 ? config?.global.toLocaleString() + " Sticker"
                 : "not available"}
-            </Typography>
+            </Typography> */}
           </DialogContentText>
         </DialogContent>
         <DialogActions>

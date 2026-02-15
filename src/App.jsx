@@ -8,29 +8,29 @@ import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
 import Picker from "./components/Picker";
 import Info from "./components/Info";
-import getConfiguration from "./utils/config";
+// import getConfiguration from "./utils/config";
 import log from "./utils/log";
 import { bannerViewed, setBannerViewed } from "./utils/banner";
 
 const { ClipboardItem } = window;
 
 function App() {
-  const [config, setConfig] = useState(null);
+  //   const [config, setConfig] = useState(null);
   const [bannerView, setBannerView] = useState(bannerViewed());
 
-  // using this to trigger the useEffect because lazy to think of a better way
-  const [rand, setRand] = useState(0);
-  useEffect(() => {
-    try {
-      const data = async () => {
-        const res = await getConfiguration();
-        setConfig(res);
-      };
-      data();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [rand]);
+  //   // using this to trigger the useEffect because lazy to think of a better way
+  //   const [rand, setRand] = useState(0);
+  //   useEffect(() => {
+  //     try {
+  //       const data = async () => {
+  //         // const res = await getConfiguration();
+  //         // setConfig(res);
+  //       };
+  //       data();
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }, [rand]);
 
   const [infoOpen, setInfoOpen] = useState(false);
 
@@ -42,7 +42,7 @@ function App() {
     setInfoOpen(false);
   };
 
-  const [character, setCharacter] = useState(49);
+  const [character, setCharacter] = useState(0);
   const [text, setText] = useState(characters[character].defaultText.text);
   const [position, setPosition] = useState({
     x: characters[character].defaultText.x,
@@ -53,7 +53,16 @@ function App() {
   const [rotate, setRotate] = useState(characters[character].defaultText.r);
   const [curve, setCurve] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const img = new Image();
+  const [img, setImg] = useState(null);
+
+  useEffect(() => {
+    const i = new Image();
+    i.src = "/img/" + characters[character].img;
+    i.onload = () => {
+      setImg(i);
+      setLoaded(true);
+    };
+  }, [character]);
 
   useEffect(() => {
     setText(characters[character].defaultText.text);
@@ -64,13 +73,8 @@ function App() {
     setRotate(characters[character].defaultText.r);
     setFontSize(characters[character].defaultText.s);
     setLoaded(false);
+    setImg(null);
   }, [character]);
-
-  img.src = "/img/" + characters[character].img;
-
-  img.onload = () => {
-    setLoaded(true);
-  };
 
   let angle = (Math.PI * text.length) / 7;
 
@@ -135,7 +139,7 @@ function App() {
     link.href = canvas.toDataURL();
     link.click();
     await log(characters[character].id, characters[character].name, "download");
-    setRand(rand + 1);
+    // setRand(rand + 1);
   };
 
   function b64toBlob(b64Data, contentType = null, sliceSize = null) {
@@ -163,12 +167,12 @@ function App() {
       }),
     ]);
     await log(characters[character].id, characters[character].name, "copy");
-    setRand(rand + 1);
+    // setRand(rand + 1);
   };
 
   return (
     <div className="App">
-      <Info open={infoOpen} handleClose={handleClose} config={config} />
+      <Info open={infoOpen} handleClose={handleClose} />
       {!bannerView && (
         <div className="bannercontainer">
           <div className="bannermessage">
@@ -197,9 +201,9 @@ function App() {
           </div>
         </div>
       )}
-      <div className="counter">
+      {/*       <div className="counter">
         Total Stickers you made: {config?.total || "Not available"}
-      </div>
+      </div> */}
       <div className="container">
         <div className="vertical">
           <div className="canvas">

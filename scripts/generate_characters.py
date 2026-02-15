@@ -18,6 +18,28 @@ DEFAULT_TEXT_CONFIG = {
 # Default color (Black)
 DEFAULT_COLOR = "#000000"
 
+# Color map for specific characters
+# Format: "character_folder_name": "#HEXCOLOR"
+COLOR_MAP = {
+    "akari": "#ffd0d4",
+    "yuzu": "#fef7c3",
+    "aoi": "#868397",
+    "rio": "#a69fc3",
+    "riku": "#6e6061",
+    "tsubaki": "#798288",
+    "haruna": "#857674",
+    "ayaka": "#d3ad99",
+    "saki": "#e2e4e4",
+    "koboshi": "#8b96a6",
+    "akane": "#e2686c",
+    "kaede": "#7d7e80",
+    "arisu": "#ddf1f6",
+    "chinatsu": "#d49486",
+    "mia": "#d7d6d6",
+    "tsumugi": "#7e5b5f",
+    "setsuna": "#ecebeb"
+}
+
 def generate_characters():
     characters = []
     id_counter = 1
@@ -26,33 +48,40 @@ def generate_characters():
         print(f"Error: Directory {IMG_DIR} does not exist.")
         return
 
-    # Walk through the directory
-    for root, dirs, files in os.walk(IMG_DIR):
-        # We only care about subdirectories of IMG_DIR, not recursive ones deeper than 1 level
-        # root equals IMG_DIR means we are at the top level
-        if root == IMG_DIR:
-            for char_name in dirs:
-                char_dir = os.path.join(IMG_DIR, char_name)
-                # List files in the character directory
-                for filename in os.listdir(char_dir):
-                    if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-                        # Generate a readable name from filename (e.g., "Char_01.png" -> "Char 01")
-                        name = os.path.splitext(filename)[0].replace('_', ' ')
-                        
-                        # Relative path for the image
-                        img_path = f"{char_name}/{filename}"
-                        
-                        character_entry = {
-                            "id": str(id_counter),
-                            "name": name,
-                            "character": char_name,
-                            "img": img_path,
-                            "color": DEFAULT_COLOR,
-                            "defaultText": DEFAULT_TEXT_CONFIG.copy()
-                        }
-                        
-                        characters.append(character_entry)
-                        id_counter += 1
+    # Walk through the directory according to COLOR_MAP order
+    # Only process characters defined in COLOR_MAP
+    for char_name in COLOR_MAP.keys():
+        char_dir = os.path.join(IMG_DIR, char_name)
+        
+        # Check if the character directory exists
+        if not os.path.exists(char_dir) or not os.path.isdir(char_dir):
+            # Skip if directory doesn't exist (user might not have created it yet)
+            continue
+            
+        # Determine color for this character
+        # Use mapped color if available, otherwise default
+        current_color = COLOR_MAP.get(char_name, DEFAULT_COLOR)
+
+        # List files in the character directory
+        for filename in os.listdir(char_dir):
+            if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+                # Generate a readable name from filename (e.g., "Char_01.png" -> "Char 01")
+                name = os.path.splitext(filename)[0].replace('_', ' ')
+                
+                # Relative path for the image
+                img_path = f"{char_name}/{filename}"
+                
+                character_entry = {
+                    "id": str(id_counter),
+                    "name": name,
+                    "character": char_name,
+                    "img": img_path,
+                    "color": current_color,
+                    "defaultText": DEFAULT_TEXT_CONFIG.copy()
+                }
+                
+                characters.append(character_entry)
+                id_counter += 1
 
     # Write to JSON file
     try:

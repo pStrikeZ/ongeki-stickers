@@ -47,7 +47,35 @@ python scripts/generate_characters.py
 ```
 
 脚本运行成功后，会覆盖 `src/characters.json` 文件。
-*注意：脚本会使用默认的文字位置和颜色配置。如果需要微调特定图片的文字位置，你需要手动修改生成的 `src/characters.json` 文件。*
+
+### 自定义文字颜色
+如果你想为特定的角色设置默认的文字颜色（而不是默认的黑色），可以打开 `scripts/generate_characters.py` 文件，修改 `COLOR_MAP` 变量：
+
+```python
+# Color map for specific characters
+# Format: "character_folder_name": "#HEXCOLOR"
+COLOR_MAP = {
+    "akari": "#ffd0d4",
+    "yuzu": "#fef7c3",
+    "aoi": "#868397",
+    "rio": "#a69fc3",
+    "riku": "#6e6061",
+    "tsubaki": "#798288",
+    "haruna": "#857674",
+    "ayaka": "#d3ad99",
+    "saki": "#e2e4e4",
+    "koboshi": "#8b96a6",
+    "akane": "#e2686c",
+    "kaede": "#7d7e80",
+    "arisu": "#ddf1f6",
+    "chinatsu": "#d49486",
+    "mia": "#d7d6d6",
+    "tsumugi": "#7e5b5f",
+    "setsuna": "#ecebeb"
+}
+```
+未在表中定义的角色将使用默认颜色（`DEFAULT_COLOR`）。
+
 
 ## 3. 本地预览
 
