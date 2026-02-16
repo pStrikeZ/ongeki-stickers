@@ -1,6 +1,6 @@
 {
-    "name": "Project Sekai Stickers",
-    "short_name": "Pjsk Stickers",
+    "name": "ONGEKI Stickers",
+    "short_name": "ONGEKI Stickers",
     "icons": [
       {
         "src": "/android-chrome-192x192.png",
@@ -18,11 +18,11 @@
         "type": "image/png"
       }
     ],
-    "theme_color": "#cf93d9",
+    "theme_color": "#99b9d3",
     "background_color": "#121212",
     "display": "standalone",
-    "description": "Make your own Project sekai stickers!",
-    "start_url": "https://st.ayaka.one/",
+    "description": "Make your own ONGEKI stickers!",
+    "start_url": "https://st.izmyk.eu.org/",
     "dir": "ltr",
     "lang": "en",
     "orientation": "portrait",
