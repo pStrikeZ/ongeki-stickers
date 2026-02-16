@@ -10,13 +10,13 @@ import Picker from "./components/Picker";
 import Info from "./components/Info";
 // import getConfiguration from "./utils/config";
 import log from "./utils/log";
-import { bannerViewed, setBannerViewed } from "./utils/banner";
+// import { bannerViewed, setBannerViewed } from "./utils/banner";
 
 const { ClipboardItem } = window;
 
 function App() {
   //   const [config, setConfig] = useState(null);
-  const [bannerView, setBannerView] = useState(bannerViewed());
+  //   const [bannerView, setBannerView] = useState(bannerViewed());
 
   //   // using this to trigger the useEffect because lazy to think of a better way
   //   const [rand, setRand] = useState(0);
@@ -54,6 +54,7 @@ function App() {
   const [curve, setCurve] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [img, setImg] = useState(null);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
     const i = new Image();
@@ -63,6 +64,16 @@ function App() {
       setLoaded(true);
     };
   }, [character]);
+
+  useEffect(() => {
+    // Wait for fonts to load before ensuring they are available for canvas
+    Promise.all([
+      document.fonts.load("12px YurukaStd"),
+      document.fonts.load("12px SSFangTangTi")
+    ]).then(() => {
+      setFontsLoaded(true);
+    });
+  }, []);
 
   useEffect(() => {
     setText(characters[character].defaultText.text);
@@ -178,7 +189,7 @@ function App() {
   return (
     <div className="App">
       <Info open={infoOpen} handleClose={handleClose} />
-      {!bannerView && (
+      {/*       {!bannerView && (
         <div className="bannercontainer">
           <div className="bannermessage">
             <p>New Sekai Stickers mobile app is coming soon</p>
@@ -205,7 +216,7 @@ function App() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
       {/*       <div className="counter">
         Total Stickers you made: {config?.total || "Not available"}
       </div> */}
