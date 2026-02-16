@@ -8,7 +8,7 @@ OUTPUT_FILE = os.path.join(BASE_DIR, 'src', 'characters.json')
 
 # Default text configuration
 DEFAULT_TEXT_CONFIG = {
-    "text": "Enter text...",
+    "text": "请输入文本",
     "x": 148,
     "y": 200,
     "r": 0,
@@ -33,7 +33,7 @@ COLOR_MAP = {
     "koboshi": "#8b96a6",
     "akane": "#e2686c",
     "kaede": "#7d7e80",
-    "arisu": "#ddf1f6",
+    "arisu": "#99b9d3",
     "chinatsu": "#d49486",
     "mia": "#d7d6d6",
     "tsumugi": "#7e5b5f",

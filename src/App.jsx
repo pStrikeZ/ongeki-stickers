@@ -79,16 +79,21 @@ function App() {
   let angle = (Math.PI * text.length) / 7;
 
   const draw = (ctx) => {
-    ctx.canvas.width = 296;
-    ctx.canvas.height = 256;
+    const SCALE = 4; // Increase resolution by 4x
+    const LOGICAL_WIDTH = 296;
+    const LOGICAL_HEIGHT = 256;
 
-    if (loaded && document.fonts.check("12px YurukaStd")) {
-      var hRatio = ctx.canvas.width / img.width;
-      var vRatio = ctx.canvas.height / img.height;
+    ctx.canvas.width = LOGICAL_WIDTH * SCALE;
+    ctx.canvas.height = LOGICAL_HEIGHT * SCALE;
+    ctx.scale(SCALE, SCALE);
+
+    if (loaded && document.fonts.check("12px YurukaStd") && document.fonts.check("12px SSFangTangTi")) {
+      var hRatio = LOGICAL_WIDTH / img.width;
+      var vRatio = LOGICAL_HEIGHT / img.height;
       var ratio = Math.min(hRatio, vRatio);
-      var centerShift_x = (ctx.canvas.width - img.width * ratio) / 2;
-      var centerShift_y = (ctx.canvas.height - img.height * ratio) / 2;
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      var centerShift_x = (LOGICAL_WIDTH - img.width * ratio) / 2;
+      var centerShift_y = (LOGICAL_HEIGHT - img.height * ratio) / 2;
+      ctx.clearRect(0, 0, LOGICAL_WIDTH, LOGICAL_HEIGHT);
       ctx.drawImage(
         img,
         0,

@@ -16,6 +16,11 @@
   border: 1px solid #ddd;
 }
 
+.canvas canvas {
+  width: 100%;
+  height: 100%;
+}
+
 .vertical {
   display: flex;
   justify-content: center;
