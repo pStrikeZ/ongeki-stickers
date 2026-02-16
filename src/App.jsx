@@ -98,7 +98,7 @@ function App() {
     ctx.canvas.height = LOGICAL_HEIGHT * SCALE;
     ctx.scale(SCALE, SCALE);
 
-    if (loaded && document.fonts.check("12px YurukaStd") && document.fonts.check("12px SSFangTangTi")) {
+    if (loaded && fontsLoaded && document.fonts.check("12px YurukaStd") && document.fonts.check("12px SSFangTangTi")) {
       var hRatio = LOGICAL_WIDTH / img.width;
       var vRatio = LOGICAL_HEIGHT / img.height;
       var ratio = Math.min(hRatio, vRatio);
